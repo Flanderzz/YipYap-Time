@@ -7,8 +7,8 @@ import com.chatApp.webSocketAPI.request.UpdateUserRequest;
 import java.util.List;
 
 public interface UserService {
-    public User findByID(Integer ID);
-    public User findUserProfile(String jwt);
+    public User findByID(Integer ID) throws UserException;
+    public User findUserProfile(String jwt) throws UserException;
     public List<User> searchUsers(String query);
     public User updateUser (Integer ID, UpdateUserRequest request) throws UserException;
 }
