@@ -1,4 +1,4 @@
-package com.chatApp.Config;
+package com.chatApp.webSocketAPI.Config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -25,7 +26,7 @@ public class AppConfig {
 
         httpSecurity.sessionManagement().sessionCreationPolicy(STATELESS)
                 .and().authorizeHttpRequests(authorize->authorize.requestMatchers("api/**").authenticated().anyRequest().permitAll())
-                .addFilterBefore(null,null)
+                .addFilterBefore(new JWTtokenValidator(), BasicAuthenticationFilter.class)
                 .csrf().disable()
                 .cors().configurationSource(new CorsConfigurationSource() {
                     @Override
