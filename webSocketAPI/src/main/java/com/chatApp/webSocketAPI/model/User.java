@@ -6,19 +6,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer ID;
-    private String Name;
-    private String Email;
-    private String Profile_pic;
+    private String name;
+    private String email;
+    private String profile_pic;
     private String password;
 
     public User (){}
 
     public User(Integer ID, String name, String email, String profile_pic, String password) {
-        super();
         this.ID = ID;
-        this.Name = name;
-        this.Email = email;
-        this.Profile_pic = profile_pic;
+        this.name = name;
+        this.email = email;
+        this.profile_pic = profile_pic;
         this.password = password;
     }
 
@@ -31,27 +30,27 @@ public class User {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getProfile_pic() {
-        return Profile_pic;
+        return profile_pic;
     }
 
     public void setProfile_pic(String profile_pic) {
-        Profile_pic = profile_pic;
+        this.profile_pic = profile_pic;
     }
 
     public String getPassword() {
