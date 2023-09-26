@@ -22,7 +22,7 @@ public interface ChatService {
 
     public Chat removeUserFromGroupChat (Integer chatID, Integer userID, User reqUserID) throws ChatException, UserException;
 
-    public Chat deleteChat (Integer chatID, Integer userID) throws ChatException, UserException;
+    public void deleteChat (Integer chatID, Integer userID) throws ChatException, UserException;
 
     public List<Chat> findAllChatByUserID(Integer userID) throws UserException;
 }
