@@ -13,14 +13,20 @@ public class Chat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer ID;
+
     private String chatName;
     private String chatImage;
 
+
     @Column(name = "is_group_chat")
     private boolean isGroupChat;
-    @Column(name = "created_by")
+
+    @JoinColumn(name = "created_by")
     @ManyToOne
     private User createdBy;
+
+    @ManyToMany
+    private Set<User> admins = new HashSet<> ();
 
     @ManyToMany
     private Set<User> users = new HashSet<> ();
@@ -30,12 +36,13 @@ public class Chat {
 
     public Chat (){}
 
-    public Chat(Integer ID, String chatName, String chatImage, boolean isGroupChat, User createdBy, Set<User> users, List<Message> messages) {
+    public Chat(Integer ID, String chatName, String chatImage, boolean isGroupChat, User createdBy, Set<User> admins, Set<User> users, List<Message> messages) {
         this.ID = ID;
         this.chatName = chatName;
         this.chatImage = chatImage;
         this.isGroupChat = isGroupChat;
         this.createdBy = createdBy;
+        this.admins = admins;
         this.users = users;
         this.messages = messages;
     }
@@ -80,6 +87,14 @@ public class Chat {
         this.createdBy = createdBy;
     }
 
+    public Set<User> getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(Set<User> admins) {
+        this.admins = admins;
+    }
+
     public Set<User> getUsers() {
         return users;
     }
@@ -95,5 +110,4 @@ public class Chat {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
-
 }
