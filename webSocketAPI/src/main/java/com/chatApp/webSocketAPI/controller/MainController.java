@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
     @GetMapping("/")
     public ResponseEntity<String> home(){
-        return new ResponseEntity<String>("hello testing", HttpStatus.OK);
+        return new ResponseEntity<String>("Front Page Loads", HttpStatus.OK);
     }
 }
