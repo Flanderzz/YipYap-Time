@@ -7,10 +7,12 @@ import com.chatApp.webSocketAPI.repository.UserRepository;
 import com.chatApp.webSocketAPI.request.UpdateUserRequest;
 import com.chatApp.webSocketAPI.service.UserService;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     UserRepository userRepository;
